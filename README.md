@@ -47,6 +47,7 @@ OPENAI_API_KEY=your-openai-api-key
 To run this bot, you’ll need a **Discord Server, Bot, Bot Token & Client ID**.  
 
 📺 [Watch this YouTube video guide](https://youtu.be/5UOMuTWrh6Q?si=dcUVBZ9Vh_LofPnz)
+Discord Official Documentation :- https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot
 
 ---
 

@@ -1,7 +1,7 @@
 const { Client,GatewayIntentBits } = require('discord.js')
 const { connectToMongoDB } = require('./config/connect')
 const express = require('express')
-const commandRoutes = require('./routes/commands')
+const messageRoutes = require('./routes/messageRoutes')
 const slashCommandRoutes = require('./routes/slashCommands')
 const webRoutes = require('./routes/webRoutes')
 
@@ -23,7 +23,7 @@ const client = new Client({
 //  send all message to routes/commands.js
 client.on('messageCreate', async (message) => {
     if (message.author.bot) return
-    await commandRoutes(message)
+    await messageRoutes(message)
 })
 
 // Send all slash commands to routes/slashCommands.js

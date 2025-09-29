@@ -1,7 +1,7 @@
 const defaultController = require('../controllers/defaultController')
 
-async function commandRoutes(message) {
+async function messageRoutes(message) {
     return defaultController(message)
 }
 
-module.exports = commandRoutes
+module.exports = messageRoutes
