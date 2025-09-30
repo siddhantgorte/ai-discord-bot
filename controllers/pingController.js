@@ -1,6 +1,6 @@
 async function pingController(interaction) {
     try {
-        await interaction.reply('🏓 Pong!');
+        await interaction.reply({content: '🏓 Pong!', ephemeral: true});
     }
     catch (error) {
         console.error('pingController() failed', error);

@@ -3,24 +3,20 @@ const createController = require('../controllers/createController')
 const userController = require('../controllers/userController')
 const serverController = require('../controllers/serverController')
 
+const commands = {
+    ping:   { controller: pingController, cooldown: 5 },
+    create: { controller: createController, cooldown: 10 },
+    user:   { controller: userController, cooldown: 5 },
+    server: { controller: serverController, cooldown: 5 },
+};
+
 async function slashCommandRoutes(interaction) {
     if (!interaction.isCommand()) return;
-    
-    if (interaction.commandName === 'ping') {
-        return pingController(interaction)
-    }
+    const command = commands[interaction.commandName];
 
-    if (interaction.commandName === 'create') {
-        return createController(interaction)
-    }
+    if (!command) return; // if command not found, just ignore
 
-    if (interaction.commandName === 'user') {
-        return userController(interaction)
-    }
-
-    if (interaction.commandName === 'server') {
-        return serverController(interaction)
-    }
+    return command.controller(interaction);
 
 }
 

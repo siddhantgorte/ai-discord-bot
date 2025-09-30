@@ -3,7 +3,7 @@ async function serverController(interaction) {
         const serverName = interaction.guild.name;
         const memberCount = interaction.guild.memberCount;
 
-        return interaction.reply(`This is ${serverName} server and has ${memberCount} members`)
+        return interaction.reply({content: `This is ${serverName} server and has ${memberCount} members`, ephemeral: true})
     }
     catch (error) {
         console.error('serverController() failed', error);

@@ -15,7 +15,7 @@ async function createController(interaction) {
         // createShortURL should return an object with { shortURL, shortId }
         const shortURL = await createShortURL(url,username)
 
-        return interaction.reply({ content: `✅ ShortURL : ${shortURL}` })
+        return interaction.reply({ content: `✅ ShortURL : ${shortURL}`, ephemeral: true })
     }
     catch (error) {
         console.error(error)

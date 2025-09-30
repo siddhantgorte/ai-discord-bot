@@ -5,7 +5,7 @@ async function userController(interaction) {
         const username = interaction.user.username
         const joinedAt = interaction.member.joinedAt.toDateString()
 
-        return interaction.reply(`This command was run by ${username}, joined server on ${joinedAt}`)
+        return interaction.reply({content:`This command was run by ${username}, joined server on ${joinedAt}`, ephemeral: true})
     }
     catch (error) {
         console.error('userController() failed', error)
