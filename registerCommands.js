@@ -25,6 +25,22 @@ const commands = [
     {
         name: 'server',
         description: 'Provides information about the server.',
+    },
+    {
+        name: 'myfiles',
+        description: 'Show the list of files you uploaded.',
+    },
+    {
+        name: 'ask',
+        description: 'Ask a question based on your selected file',
+        options: [
+            {
+                name: 'question',
+                description: 'Enter your question',
+                type: 3, // STRING
+                required: true
+            }
+        ]
     }
 ]
 
