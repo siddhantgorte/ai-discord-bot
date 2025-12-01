@@ -14,7 +14,7 @@ async function returnUserFilesController(interaction) {
         })
     }
 
-    const userFiles = fs.readdirSync(userFolder)
+    const userFiles = fs.readdirSync(userFolder).sort()
 
     if (userFiles.length === 0) {
         return interaction.reply({
@@ -22,8 +22,6 @@ async function returnUserFilesController(interaction) {
             ephemeral: true
         });
     }
-
-
 
     const selectMenu = new StringSelectMenuBuilder()
     .setCustomId('select_file')

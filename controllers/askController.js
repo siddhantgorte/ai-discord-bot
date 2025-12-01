@@ -1,4 +1,5 @@
 const { selectedFiles } = require('./selectFileController')
+const queryPDF = require("../services/pdfQuery");
 
 async function askController(interaction) {
     const userId = interaction.user.id
@@ -21,11 +22,16 @@ async function askController(interaction) {
         })
     }
 
-    await interaction.reply({
-        content: `📌 Received your question:\n**${question}**\n\nSelected file: **${fileName}**\n\n⏳ Processing...`,
-        ephemeral: true
-    })
+    // Defer reply while processing
+    await interaction.deferReply({ ephemeral: true });
 
+    //  call the PDF query module
+    const answer = await queryPDF(userId, fileName, question)
+
+    await interaction.followUp({
+        content: answer,
+        ephemeral: true,
+    })
 }
 
 module.exports = askController

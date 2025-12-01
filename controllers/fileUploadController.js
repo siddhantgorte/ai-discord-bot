@@ -1,5 +1,6 @@
 const fs = require('fs')
 const path = require('path')
+const indexPDF = require('../services/pdfIndexer')
 
 async function fileUploadController(message) {
     const userId = message.author.id
@@ -20,6 +21,12 @@ async function fileUploadController(message) {
         fs.writeFileSync(filePath, buffer)
 
         console.log(`Saved file ${fileName} for user ${userId}`);
+
+        //  create seperate vector collection per user
+        const collectionName = `user_${userId}`
+
+        //  Index PDF into Qdrant
+        await indexPDF(filePath, userId, collectionName)
     }
 
     //  Reply to user
